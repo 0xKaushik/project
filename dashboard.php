@@ -20,6 +20,7 @@ if (!isset($_SESSION["userId"])) {
     <script>
         var $j = jQuery.noConflict();
     </script>
+    <script src="script.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -33,7 +34,7 @@ if (!isset($_SESSION["userId"])) {
               <img src="logo.jpg" alt="Company Logo" class="img-fluid" style="max-width: 200px;">
               <h4 class="mb-auto">Host Management System</h4>
               <div>
-                <button id="addHostBtn">Add Host</button>
+                <button id="addHostBtn" class="btn btn-danger" onclick=add_host()>Add Host</button>
                   <button id="logoutButton" class="btn btn-danger" onclick=logout()>Logout</button>
               </div>
           </div>
@@ -92,7 +93,7 @@ if (!isset($_SESSION["userId"])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-    <script src="script.js"></script>
+
 </body>
 
 </html>
