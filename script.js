@@ -39,7 +39,7 @@ function add_host(){
         type: "POST",
         url: "add_host.php",
         success: function(respone){
-            window.location.href = "index.html";
+            window.location.href = "add_host.html";
         },
         error: function(){
             alert("Error occured, please try again");

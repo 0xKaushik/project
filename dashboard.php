@@ -32,7 +32,7 @@ if (!isset($_SESSION["userId"])) {
       <div class="container">
           <div class="d-flex justify-content-between align-items-center">
               <img src="logo.jpg" alt="Company Logo" class="img-fluid" style="max-width: 200px;">
-              <h4 class="mb-auto">Host Management System</h4>
+              <h4 class="mb-auto">IT Inventory Management System</h4>
               <div>
                 <button id="addHostBtn" class="btn btn-danger" onclick=add_host()>Add Host</button>
                   <button id="logoutButton" class="btn btn-danger" onclick=logout()>Logout</button>
