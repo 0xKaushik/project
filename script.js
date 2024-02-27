@@ -33,3 +33,23 @@ function logout() {
         }
     });
 }
+
+$(document).ready(function() {
+    $("#addHostForm").submit(function(event) {
+        event.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: "add_host.php",
+            data: $("#addHostForm").serialize(),
+            success: function(response) {
+                console.log(response);
+                alert(response);
+                window.location.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    });
+});

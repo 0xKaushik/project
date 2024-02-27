@@ -5,6 +5,7 @@ if (!isset($_SESSION["userId"])) {
     header("Location: index.html");
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -44,13 +45,47 @@ if (!isset($_SESSION["userId"])) {
           <div class="col-md-8">
               <div class="card">
                   <div class="card-body">
-                      <p>Welcome to your dashboard!</p>
-                      <!-- Add your dashboard content here -->
+                      <h4>Host Information</h4>
+                      <table class="table table-striped">
+                          <thead>
+                              <tr>
+                                  <th>ID</th>
+                                  <th>Hostname</th>
+                                  <th>IP Address</th>
+                                  <th>Operating System</th>
+                                  <th>VLAN</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <?php
+                              require "db_connect.php";
+                              $sql = "SELECT id, hostname, ip_address, os ,VLAN FROM host_info";
+                              $result = $conn->query($sql);
+                              if ($result->num_rows > 0) {
+                                  while ($row = $result->fetch_assoc()) {
+                                      echo "<tr>";
+                                      echo "<td>" . $row["id"] . "</td>";
+                                      echo "<td>" . $row["hostname"] . "</td>";
+                                      echo "<td>" . $row["ip_address"] . "</td>";
+                                      echo "<td>" . $row["os"] . "</td>";
+                                      echo "<td>" . $row["VLAN"] . "</td>";
+                                      echo "</tr>";
+                                  }
+                              } else {
+                                  echo "<tr><td colspan='5'>No hosts found</td></tr>";
+                              }
+                              $conn->close();
+                              ?>
+                          </tbody>
+                      </table>
                   </div>
               </div>
           </div>
       </div>
   </div>
+
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
