@@ -33,6 +33,7 @@ if (!isset($_SESSION["userId"])) {
               <img src="logo.jpg" alt="Company Logo" class="img-fluid" style="max-width: 200px;">
               <h4 class="mb-auto">Host Management System</h4>
               <div>
+                <button id="addHostBtn">Add Host</button>
                   <button id="logoutButton" class="btn btn-danger" onclick=logout()>Logout</button>
               </div>
           </div>
