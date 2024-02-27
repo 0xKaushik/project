@@ -34,22 +34,15 @@ function logout() {
     });
 }
 
-$(document).ready(function() {
-    $("#addHostForm").submit(function(event) {
-        event.preventDefault();
-
-        jQuery.ajax({
-            type: "POST",
-            url: "add_host.php",
-            data: $("#addHostForm").serialize(),
-            success: function(response) {
-                console.log(response);
-                alert(response);
-                window.location.reload();
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
-            }
-        });
-    });
-});
+function add_host(){
+    jQuery.ajax({
+        type: "POST",
+        url: "add_host.php",
+        success: function(respone){
+            window.location.href = "index.html";
+        },
+        error: function(){
+            alert("Error occured, please try again");
+        }
+    })
+}
