@@ -46,3 +46,16 @@ function add_host(){
         }
     })
 }
+
+function view_host(){
+    jQuery.ajax({
+        type:"POST",
+        url: "view_host.php",
+        success: function(respone){
+            window.location.href = "view_host.php"
+        },
+        error: function(){
+            alert("Error occured");
+        }
+    })
+}
