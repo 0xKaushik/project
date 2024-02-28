@@ -30,7 +30,7 @@ if (!isset($_SESSION["userId"])) {
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between align-items-center">
         <img src="logo.jpg" alt="Company Logo" class="img-fluid" style="max-width: 200px; mix-blend-mode: multiply;">
-        <h4 class="mb-auto">IT Inventory Management System</h4>
+        <h4 class="mb-auto">IT Asset Management System</h4>
         <div class="d-flex justify-content-between align-items-center ">
                 <button id="addHostBtn" class="btn btn-danger" style="margin-right: 10px;" onclick=add_host()>Add Host</button>
                 <button id="viewHostBtn" class="btn btn-danger" style="margin-right: 10px;" onclick=view_host()>View Host</button>

@@ -29,3 +29,10 @@ body {
 .img{
     max-width: 150px;
 }
+
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-wrap: nowrap;
+}

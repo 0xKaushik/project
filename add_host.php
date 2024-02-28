@@ -5,6 +5,7 @@ if (!isset($_SESSION["userId"])) {
     header("Location: index.html");
     exit();
 }
+
 ?>
 
 
@@ -59,12 +60,25 @@ $VLAN = isset($_POST["VLAN"]) ? filter_var(trim($_POST["VLAN"]), FILTER_SANITIZE
 if (empty($VLAN)) {
     die("VLAN is required");
 }
-
-$remarks = isset($_POST["Remarks"]) ? filter_var(trim($_POST["Remarks"]), FILTER_SANITIZE_STRING) : '';
-if (empty($Remarks)) {
-    die("Remarks are required");
+if (isset($_POST['atid'])) {
+    $ATID = filter_var(trim($_POST["atid"]), FILTER_SANITIZE_STRING);
+    if (empty($ATID)) {
+        die("ATID is required");
+    }
+} else {
+    die("ATID is not set in the form submission");
 }
-$sql = "INSERT INTO `host_info` (`serialNum`,`modelNum`, `ipAddress`, `hostname`, `empName`,`dept`,`location`,`VLAN`,`Remarks`) VALUES (NULL,'$serialNum', '$modelNum', '$ipAddress', '$hostname',`$empName`,`$dept`,`$location`,`$VLAN`,`$Remarks`)";
+
+if (isset($_POST['remarks'])) {
+    $remarks = filter_var(trim($_POST["remarks"]), FILTER_SANITIZE_STRING);
+    if (empty($remarks)) {
+        die("Remarks are required");
+    }
+} else {
+    die("Remarks are not set in the form submission");
+}
+
+$sql = "INSERT INTO `host_info` (`serialNum`, `modelNum`, `ipAddress`, `ATID`, `hostname`, `empName`, `dept`, `Location`, `VLAN`, `Remarks`) VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '1')";
     if ($conn->query($sql) === true) {
     header("Location: view_host.php");
     }
