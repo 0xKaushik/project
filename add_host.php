@@ -7,9 +7,9 @@ if (!isset($_SESSION["userId"])) {
 }
 
 $servername = "localhost";
-$username = "your_username";
-$password = "your_password";
-$dbname = "your_database_name";
+$username = "root";
+$password = "";
+$dbname = "webappdata";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -17,16 +17,30 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$hostname = $conn->real_escape_string($_POST["hostname"]);
-$ipAddress = $conn->real_escape_string($_POST["ipAddress"]);
-$os = $conn->real_escape_string($_POST["os"]);
-$VLAN = $conn->real_escape_string($_POST["VLAN"]);
+$hostname = filter_var(trim($_POST["hostname"]), FILTER_SANITIZE_STRING);
+if (empty($hostname)) {
+    die("Hostname is required");
+}
+$ipAddress = filter_var(trim($_POST["ipAddress"]), FILTER_SANITIZE_STRING);
+if (empty($ipAddress)) {
+    die("IP Address is required");
+}
 
-$sql = "INSERT INTO host_info (hostname, ip_address, os, VLAN) VALUES ('$hostname', '$ipAddress', '$os', '$VLAN')";
+$os = filter_var(trim($_POST["os"]), FILTER_SANITIZE_STRING);
+if (empty($os)) {
+    die("Operating system is required");
+}
+$VLAN = filter_var(trim($_POST["VLAN"]), FILTER_SANITIZE_STRING);
+if (empty($VLAN)) {
+    die(" VLAN is required");
+}
 
-if ($conn->query($sql) === true) {
-    echo "New host added successfully";
-} else {
+
+$sql = "INSERT INTO `host_info` (`id`,`hostname`, `ip_address`, `os`, `VLAN`) VALUES (NULL,'$hostname', '$ipAddress', '$os', '$VLAN')";
+    if ($conn->query($sql) === true) {
+    header("Location: view_host.php");
+    }
+    else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
