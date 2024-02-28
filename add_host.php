@@ -95,7 +95,7 @@ if (empty($hostname)) {
 $ipAddress = filter_var(trim($_POST["ipAddress"]), FILTER_SANITIZE_STRING);
 if (empty($ipAddress)) {
     die("IP Address is required");
-
+}
 
 $os = filter_var(trim($_POST["os"]), FILTER_SANITIZE_STRING);
 if (empty($os)) {
