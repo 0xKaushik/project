@@ -35,16 +35,7 @@ function logout() {
 }
 
 function add_host(){
-    jQuery.ajax({
-        type: "POST",
-        url: "add_host.php",
-        success: function(respone){
-            window.location.href = "add_host.php";
-        },
-        error: function(){
-            alert("Error occured, please try again");
-        }
-    })
+    window.location.href = "add_host.html";
 }
 
 function view_host(){

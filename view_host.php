@@ -34,7 +34,6 @@ if (!isset($_SESSION["userId"])) {
         <h4 class="mb-auto">IT Inventory Management System</h4>
         <div class="d-flex justify-content-between ">
             <button id="addHostBtn" class="btn btn-danger" style="margin-right: 10px;" onclick=add_host()>Add Host</button>
-            <button id="viewHostBtn" class="btn btn-danger" style="margin-right: 10px;" onclick=view_host()>View Host</button>
             <button id="logoutButton" class="btn btn-danger" style="margin-right: 10px;" onclick=logout()>Logout</button>   
     
     <a class="navbar-brand" href="dashboard.php">
@@ -64,7 +63,7 @@ if (!isset($_SESSION["userId"])) {
                               require "db_connect.php";
                               $sql = "SELECT id, hostname, ip_address, os ,VLAN FROM host_info";
                               $result = $conn->query($sql);
-                              if ($result->num_rows > 0) {
+                              if ($result !== false && $result->num_rows > 0) {
                                   while ($row = $result->fetch_assoc()) {
                                       echo "<tr>";
                                       echo "<td>" . $row["id"] . "</td>";
