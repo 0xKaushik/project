@@ -78,7 +78,7 @@ if (isset($_POST['remarks'])) {
     die("Remarks are not set in the form submission");
 }
 
-$sql = "INSERT INTO `host_info` (`serialNum`, `modelNum`, `ipAddress`, `ATID`, `hostname`, `empName`, `dept`, `Location`, `VLAN`, `Remarks`) VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '1')";
+$sql = "INSERT INTO `host_info` (`serialNum`, `modelNum`, `ipAddress`, `ATID`, `hostname`, `empName`, `dept`, `Location`, `VLAN`, `Remarks`) VALUES ('{$serialNum}', '{$modelNum}', '{$ipAddress}', '{$ATID}', '{$hostname}', '{$empName}', '{$dept}', '{$location}', '{$VLAN}', '{$remarks}')";
     if ($conn->query($sql) === true) {
     header("Location: view_host.php");
     }
