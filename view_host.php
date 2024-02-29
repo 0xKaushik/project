@@ -51,37 +51,39 @@ if (!isset($_SESSION["userId"])) {
                       <table class="table table-striped">
                           <thead>
                               <tr>
-                                    <th>Serial Number</th>
-                                    <th>Model Number</th>
-                                    <th>IP Address</th>
-                                    <th>ATID</th>
-                                    <th>Hostname</th>
-                                    <th>Category</th>
-                                    <th>Employee Name</th>
-                                    <th>Department</th>
-                                    <th>Location</th>
-                                    <th>VLAN</th>
-                                    <th>Remarks</th>
+                              <th>Emp. Name</th>
+                              <th>Dept.</th>
+                              <th>Category</th>      
+                              <th>Model No.</th>
+                              <th>S. No.</th>
+                              <th>Host Name</th>
+                              <th>IP Add.</th>
+                              <th>VLAN</th>
+                              <th>AV Status</th>
+                              <th>Location</th>
+                              <th>ATID</th>
+                              <th>Remarks</th>
                               </tr>
                           </thead>
                           <tbody>
                               <?php
                               require "db_connect.php";
-                              $sql = "SELECT `serialNum`, `modelNum`, `ipAddress`, `ATID`, `hostname`,`category`, `empName`, `dept`, `Location`, `VLAN`, `Remarks` FROM host_info";
+                              $sql = "SELECT `serialNum`, `modelNum`, `ipAddress`, `AV_status`,`ATID`, `hostname`,`category`, `empName`, `dept`, `Location`, `VLAN`, `Remarks` FROM host_info";
                               $result = $conn->query($sql);
                               if ($result !== false && $result->num_rows > 0) {
                                   while ($row = $result->fetch_assoc()) {
                                       echo "<tr>";
+                                      echo "<td>" . $row["empName"] . "</td>";
+                                      echo "<td>" . $row["dept"] . "</td>";
+                                      echo "<td>" . $row["category"] . "</td>";
+                                      echo "<td>" . $row["modelNum"] . "</td>";
                                     echo "<td>" . $row["serialNum"] . "</td>";
-                                    echo "<td>" . $row["modelNum"] . "</td>";
-                                    echo "<td>" . $row["ipAddress"] . "</td>";
-                                    echo "<td>" . $row["ATID"] . "</td>";
                                     echo "<td>" . $row["hostname"] . "</td>";
-                                    echo "<td>" . $row["category"] . "</td>";
-                                    echo "<td>" . $row["empName"] . "</td>";
-                                    echo "<td>" . $row["dept"] . "</td>";
-                                    echo "<td>" . $row["Location"] . "</td>";
+                                    echo "<td>" . $row["ipAddress"] . "</td>";
                                     echo "<td>" . $row["VLAN"] . "</td>";
+                                    echo "<td>" . $row["AV_status"] . "</td>";
+                                    echo "<td>" . $row["Location"] . "</td>";
+                                    echo "<td>" . $row["ATID"] . "</td>";
                                     echo "<td>" . $row["Remarks"] . "</td>";
                                       echo "</tr>";
                                   }

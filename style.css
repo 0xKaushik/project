@@ -21,9 +21,9 @@ body {
     margin: 0 auto;
 }
 
-/* Change the background color of the header */
+
 .card-header {
-    background-color: #f8f9fa; /* Light gray color */
+    background-color: #f8f9fa; 
 }
 
 .img{
