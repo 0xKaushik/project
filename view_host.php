@@ -51,22 +51,23 @@ if (!isset($_SESSION["userId"])) {
                       <table class="table table-striped">
                           <thead>
                               <tr>
-                                  <th>Serial Number</th>
-                                  <th>Model Number</th>
-                                  <th>IP Address</th>
-                                  <th>ATID</th>
-                                  <th>Hostname</th>
-                                  <th>Employee Name</th>
-                                  <th>Department</th>
-                                  <th>Location</th>
-                                  <th>VLAN</th>
-                                  <th>Remarks</th>
+                                    <th>Serial Number</th>
+                                    <th>Model Number</th>
+                                    <th>IP Address</th>
+                                    <th>ATID</th>
+                                    <th>Hostname</th>
+                                    <th>Category</th>
+                                    <th>Employee Name</th>
+                                    <th>Department</th>
+                                    <th>Location</th>
+                                    <th>VLAN</th>
+                                    <th>Remarks</th>
                               </tr>
                           </thead>
                           <tbody>
                               <?php
                               require "db_connect.php";
-                              $sql = "SELECT `serialNum`, `modelNum`, `ipAddress`, `ATID`, `hostname`, `empName`, `dept`, `Location`, `VLAN`, `Remarks` FROM host_info";
+                              $sql = "SELECT `serialNum`, `modelNum`, `ipAddress`, `ATID`, `hostname`,`category`, `empName`, `dept`, `Location`, `VLAN`, `Remarks` FROM host_info";
                               $result = $conn->query($sql);
                               if ($result !== false && $result->num_rows > 0) {
                                   while ($row = $result->fetch_assoc()) {
@@ -76,6 +77,7 @@ if (!isset($_SESSION["userId"])) {
                                     echo "<td>" . $row["ipAddress"] . "</td>";
                                     echo "<td>" . $row["ATID"] . "</td>";
                                     echo "<td>" . $row["hostname"] . "</td>";
+                                    echo "<td>" . $row["category"] . "</td>";
                                     echo "<td>" . $row["empName"] . "</td>";
                                     echo "<td>" . $row["dept"] . "</td>";
                                     echo "<td>" . $row["Location"] . "</td>";
