@@ -40,6 +40,10 @@ $hostname = isset($_POST["hostname"]) ? filter_var(trim($_POST["hostname"]), FIL
 if (empty($hostname)) {
     die("Hostname is required");
 }
+$category = isset($_POST["category"]) ? filter_var(trim($_POST["category"]), FILTER_SANITIZE_STRING) : '';
+if (empty($category)) {
+    die("Category is required");
+}
 
 $empName = isset($_POST["empName"]) ? filter_var(trim($_POST["empName"]), FILTER_SANITIZE_STRING) : '';
 if (empty($empName)) {
@@ -78,7 +82,7 @@ if (isset($_POST['remarks'])) {
     die("Remarks are not set in the form submission");
 }
 
-$sql = "INSERT INTO `host_info` (`serialNum`, `modelNum`, `ipAddress`, `ATID`, `hostname`, `empName`, `dept`, `Location`, `VLAN`, `Remarks`) VALUES ('{$serialNum}', '{$modelNum}', '{$ipAddress}', '{$ATID}', '{$hostname}', '{$empName}', '{$dept}', '{$location}', '{$VLAN}', '{$remarks}')";
+$sql = "INSERT INTO `host_info` (`serialNum`, `modelNum`, `ipAddress`, `ATID`, `hostname`,`category`, `empName`, `dept`, `Location`, `VLAN`, `Remarks`) VALUES ('{$serialNum}', '{$modelNum}', '{$ipAddress}', '{$ATID}', '{$hostname}', '{$category}','{$empName}', '{$dept}', '{$location}', '{$VLAN}', '{$remarks}')";
     if ($conn->query($sql) === true) {
     header("Location: view_host.php");
     }
